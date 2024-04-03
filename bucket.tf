@@ -33,6 +33,18 @@ resource "aws_s3_bucket_public_access_block" "cloudtrail" {
   restrict_public_buckets = true
 }
 
+# Any objects placed into this bucket should be owned by the bucket
+# owner. This ensures that even if objects are added by a different
+# account, the bucket-owning account retains full control over the
+# objects stored in this bucket.
+resource "aws_s3_bucket_ownership_controls" "cloudtrail" {
+  bucket = aws_s3_bucket.cloudtrail.id
+
+  rule {
+    object_ownership = "BucketOwnerEnforced"
+  }
+}
+
 # Policy document that allows CloudTrail to write logs to this bucket.
 # See
 # https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create-s3-bucket-policy-for-cloudtrail.html.
