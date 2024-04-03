@@ -10,11 +10,15 @@ resource "aws_s3_bucket" "cloudtrail" {
   ]
 
   bucket_prefix = var.bucket_prefix
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
+}
+
+# Ensure the S3 bucket is encrypted
+resource "aws_s3_bucket_server_side_encryption_configuration" "cloudtrail" {
+  bucket = aws_s3_bucket.cloudtrail.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
     }
   }
 }
