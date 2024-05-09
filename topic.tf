@@ -20,8 +20,8 @@ data "aws_iam_policy_document" "allow_cloudtrail_to_publish_to_topic" {
     ]
     effect = "Allow"
     principals {
-      type        = "Service"
       identifiers = ["cloudtrail.amazonaws.com"]
+      type        = "Service"
     }
     resources = [
       aws_sns_topic.cloudtrail.arn,

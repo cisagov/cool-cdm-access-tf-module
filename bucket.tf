@@ -56,8 +56,8 @@ data "aws_iam_policy_document" "allow_cloudtrail_to_write_logs" {
     ]
     effect = "Allow"
     principals {
-      type        = "Service"
       identifiers = ["cloudtrail.amazonaws.com"]
+      type        = "Service"
     }
     resources = [
       aws_s3_bucket.cloudtrail.arn,
@@ -78,8 +78,8 @@ data "aws_iam_policy_document" "allow_cloudtrail_to_write_logs" {
     }
     effect = "Allow"
     principals {
-      type        = "Service"
       identifiers = ["cloudtrail.amazonaws.com"]
+      type        = "Service"
     }
     resources = [
       "${aws_s3_bucket.cloudtrail.arn}/AWSLogs/${local.account_id}/*",

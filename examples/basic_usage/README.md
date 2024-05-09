@@ -8,6 +8,7 @@ followed by the `terraform apply` command.
 Note that this example may create resources which cost money. Run
 `terraform destroy` when you no longer need these resources.
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements ##
 
 | Name | Version |
@@ -48,3 +49,4 @@ No resources.
 | queue | The SQS queue of messages notifying of CloudTrail logs being written to the CDM S3 bucket. |
 | topic | The SNS topic for notifications of CloudTrail logs being written to the CDM S3 bucket. |
 | trail | The CloudTrail trail for CDM. |
+<!-- END_TF_DOCS -->
