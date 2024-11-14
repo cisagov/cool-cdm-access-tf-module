@@ -11,10 +11,11 @@ terraform {
     # migrated to version 5.x.
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = ">= 5.0"
     }
   }
 
-  # We want to hold off on 1.1 or higher until we have tested it.
-  required_version = "~> 1.0"
+  # Version 1.1 of Terraform is the first version to support the
+  # nullable key in variable definitions.
+  required_version = ">= 1.1"
 }
